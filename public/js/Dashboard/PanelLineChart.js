@@ -1,6 +1,6 @@
 class BarChart extends DashboardPanelChart {
-    constructor(property) {
-        super();
+    constructor(property, index) {
+        super(index);
         this.propertyToUse = property;
     }
 

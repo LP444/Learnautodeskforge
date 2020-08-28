@@ -3,9 +3,11 @@ $(document).ready(function() {
         if ($(e.target).hasClass('orbit-gizmo')) {
             // to make sure we get the viewer, let's use the global var NOP_VIEWER
             if (NOP_VIEWER === null || NOP_VIEWER === undefined) return;
+            let charts = [];
             for (let index = 0; index < 10; index++) {               
-                new Dashboard(NOP_VIEWER, [new BarChart('Material')],index)
+                charts.push(new BarChart('Material', index));
             }
+            new Dashboard(NOP_VIEWER, charts);
         }
     });
 })

@@ -9,6 +9,10 @@ class DashboardPanel {
 
 // Dashboard panels for charts
 class DashboardPanelChart extends DashboardPanel {
+    constructor(index) {
+        super();
+        this.index = index;
+    }
     load(parentDivId, divId, viewer, modelData) {
         if (!modelData.hasProperty(this.propertyToUse)) {
             alert('This model does not contain a ' + this.propertyToUse + ' property for the ' + this.constructor.name);
@@ -16,7 +20,7 @@ class DashboardPanelChart extends DashboardPanel {
             console.log(Object.keys(modelData._modelData));
             return false;
         }
-        divId = this.propertyToUse.replace(/[^A-Za-z0-9]/gi, '') + divId; // div name = property + chart type
+        divId = this.propertyToUse.replace(/[^A-Za-z0-9]/gi, '') + divId + '-' + this.index; // div name = property + chart type + index
         super.load(parentDivId, divId, viewer);
         this.canvasId = divId + 'Canvas';
         $('#' + divId).append('<canvas id="' + this.canvasId + '" width="400" height="400"></canvas>');
